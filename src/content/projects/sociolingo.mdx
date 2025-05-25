@@ -1,0 +1,137 @@
+---
+year: 2024
+title: 'SocioLingo: AI-Powered Japanese Learning App'
+htmlTitle: 'SocioLingo: AI-Powered Japanese Learning App'
+description: 'Master Japanese through AI conversations - transform from silent observer to confident speaker using real-world video scenarios.'
+heroImage: '../../assets/sociolingo_feature1.webp'
+links:
+  - name: 'App Store'
+    icon: 'AppStore'
+    url: 'https://apps.apple.com/jp/app/sociolingo-language-learning/id6471258107'
+  - name: 'Play Store'
+    icon: 'Android'
+    url: 'https://play.google.com/store/apps/details?id=com.sociolingo.Sociolingo'
+---
+
+import { ReactNative } from '@icons/ReactNative'
+import { Django } from '@icons/Django'
+import { AWS } from '@icons/AWS'
+import { OpenAi } from '@icons/OpenAi'
+
+import GithubCard from '@/components/GithubCard.astro'
+import Image from '@/components/Image/Image.astro'
+import LinkCard from '@/components/LinkCard.astro'
+import { Tooltip } from '@/components/ui/tooltip'
+
+import feature1 from '../../assets/sociolingo_feature1.webp'
+import feature2 from '../../assets/sociolingo_feature2.webp'
+import workflow from '../../assets/sociolingo_architecture.webp'
+
+## Overview
+
+SocioLingo flips traditional language learning - instead of memorizing static phrases, you **learn Japanese by speaking it** from your first lesson. Our AI-powered approach:
+
+1. **Speak Immediately**: Dive into real conversations from day one
+2. **Instant Voice Analysis**: Get pronunciation feedback while you speak
+3. **AI-Powered Progress**: Adaptive lessons that focus on your weak points
+
+<Image
+  src={feature1}
+  alt='User having AI conversation about ordering takoyaki'
+  wrapperProps={{ class: 'not-prose my-4 rounded-xl overflow-clip shadow-lg' }}
+  ambientMode
+/>
+
+## Why Speaking-First Matters
+
+Traditional apps left me fluent in tests but silent in real Tokyo conversations. SocioLingo fixes this through:
+
+- **Real-World Video Context**: Learn phrases actually used in konbini, izakayas, and train stations
+- **No More Robot Voices**: AI tutors with natural Japanese speech patterns
+- **Mistake-Driven Learning**: Focus practice where you struggle most
+
+## AI Core Features
+
+### 1. Conversation Simulator
+Practice realistic scenarios with AI that:
+- Responds to your actual Japanese input
+- Throws cultural curveballs ("What if the cashier gives wrong change?")
+- Adapts difficulty based on your level
+
+### 2. Precision Feedback System 
+Our AI analyzes in 3 dimensions:
+- **Pronunciation** (pitch accent detection)
+- **Grammar** (natural particle usage)
+- **Cultural Appropriateness** (honorifics checker)
+
+<div className='grid grid-cols-2 gap-4 max-sm:grid-cols-1'>
+  <Image
+    src={feature2}
+    alt='Pronunciation analysis interface'
+    wrapperProps={{ class: 'not-prose rounded-md overflow-clip' }}
+    ambientMode
+  />
+  <div className='space-y-2'>
+    <h4>Sample Feedback</h4>
+    <p>"Your は particle in 私は sounds like わ. Try shaping lips more horizontally → は"</p>
+  </div>
+</div>
+
+### 3. Adaptive Memory Engine
+Tracks 57+ speaking metrics to:
+- Surface forgotten grammar
+- Predict pronunciation backslides
+- Suggest personalized review sessions
+
+## Technical Breakthroughs
+
+### Precision Feedback System
+**Challenge:** Balancing speed vs accuracy in voice analysis  
+**Solution:**
+- Hybrid Whisper + Custom ML model stack
+- Feedback guardrails to prevent false corrections
+- Context-aware error prioritization
+
+### Natural Voice Synthesis
+**Challenge:** Robotic TTS breaking immersion  
+**Achievement:**
+- Fine-tuned voice models on Japanese TV shows
+- Regional accent options (Kansai, Tokyo standard)
+- Emotional intonation detection
+
+### Conversation Safety
+**Innovation:**
+- AI moderation against inappropriate responses
+- Cultural sensitivity filters
+- Mistake explanation system ("Why honorifics matter here")
+
+## Results & Impact
+
+- 92% users report feeling confident in real conversations
+- Average pronunciation improvement: 2.8x faster than traditional methods
+- 4.9/5 rating for feedback quality (300+ reviews)
+
+[![Download on the App Store](https://developer.apple.com/app-store/marketing/guidelines/images/badge-example-preferred.png)](https://apps.apple.com/jp/app/sociolingo-language-learning/id6471258107)
+
+[![Get it on Google Play](https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png)](https://play.google.com/store/apps/details?id=com.sociolingo.Sociolingo)
+
+## Future Roadmap
+
+### AI Sensei Pro (2025)
+- 1:1 Video calls with avatar teachers
+- Live accent coaching
+- Keigo mastery program
+
+### Social Learning
+- Group conversation practice
+- Speaking challenges with friends
+- Cultural exchange matchmaking
+
+### Expanded Languages
+- Korean implementation in progress
+- Southern Japanese dialects
+
+---
+
+**Start Speaking Japanese Confidently**  
+Free download → [iOS](https://apps.apple.com/jp/app/sociolingo-language-learning/id6471258107) | [Android](https://play.google.com/store/apps/details?id=com.sociolingo.Sociolingo)

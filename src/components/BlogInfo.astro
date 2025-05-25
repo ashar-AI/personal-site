@@ -1,0 +1,61 @@
+---
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
+
+// Extend dayjs with relative time plugin
+dayjs.extend(relativeTime)
+
+interface Props {
+  /** Publication date (Date object or ISO string) */
+  pubDate: Date | string;
+  /** Optional reading time in minutes */
+  readingTime?: number;
+  /** Show relative time (e.g., '2 days ago') */
+  showRelativeTime?: boolean;
+  /** Additional class names */
+  class?: string;
+}
+
+const { 
+  pubDate, 
+  readingTime, 
+  showRelativeTime = false,
+  class: className = '' 
+} = Astro.props;
+
+// Ensure pubDate is a Date object
+const publishedDate = new Date(pubDate);
+const formattedDate = dayjs(publishedDate).format('MMMM D, YYYY');
+const relativeDate = dayjs(publishedDate).fromNow();
+---
+
+<div class:list={[
+  'flex flex-wrap items-center gap-1 text-sm text-zinc-400',
+  className
+]}>
+  <time 
+    datetime={publishedDate.toISOString()}
+    title={formattedDate}
+    class='whitespace-nowrap'
+  >
+    {formattedDate}
+  </time>
+  
+  {readingTime && readingTime > 0 && (
+    <>
+      <span class='mx-1 text-zinc-600'>•</span>
+      <span class='whitespace-nowrap'>
+        {Math.ceil(readingTime)} min read
+      </span>
+    </>
+  )}
+  
+  {showRelativeTime && (
+    <>
+      <span class='mx-1 text-zinc-600'>•</span>
+      <span class='whitespace-nowrap text-zinc-500' title={formattedDate}>
+        {relativeDate}
+      </span>
+    </>
+  )}
+</div>

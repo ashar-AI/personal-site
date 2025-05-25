@@ -1,0 +1,44 @@
+---
+import Image from './Image'
+import Link from './Link'
+import { BLOG_CONFIG, type BlogAuthor } from '@/config/blog'
+
+interface Props {
+  author?: Partial<BlogAuthor>;
+  timeToRead?: number;
+}
+
+const { author: authorOverride, timeToRead = BLOG_CONFIG.defaultReadingTime } = Astro.props;
+const author = { ...BLOG_CONFIG.defaultAuthor, ...authorOverride };
+---
+
+<Link
+  href={author.twitter ? `https://x.com/${author.twitter.replace('@', '')}` : author.website}
+  target='_blank'
+  class='space-y-3 text-slate-200 hover:no-underline'
+  aria-label={`Visit ${author.name}'s profile`}
+>
+  <p class='font-display text-lg'>Written by</p>
+  <div class='flex items-center gap-3'>
+    <Image
+      src={author.avatar}
+      alt={`${author.name}'s avatar`}
+      class='size-12'
+      width={48}
+      height={48}
+      wrapperProps={{
+        class: 'rounded-full outline outline-zinc-800'
+      }}
+      inferSize
+    />
+    <span class='flex-1 text-slate-400'>
+      <p class='font-medium text-zinc-200'>{author.name}</p>
+      <p class='text-sm text-slate-400/80'>
+        {Math.ceil(timeToRead)} min read
+        {author.title && (
+          <span class='block text-xs text-zinc-500'>{author.title}</span>
+        )}
+      </p>
+    </span>
+  </div>
+</Link>

@@ -1,0 +1,30 @@
+---
+import { BLOG_CONFIG } from '@/config/blog'
+import { SITE_CONFIG } from '@/config/site'
+
+import { Pencil } from './icons/Pencil'
+import SectionHeader, {
+  type Props as SectionHeaderProps
+} from './SectionHeader.astro'
+
+interface Props extends Pick<SectionHeaderProps, 'forHomePage' | 'class'> {
+  showDescription?: boolean;
+}
+
+const { title, description } = BLOG_CONFIG;
+const { author } = SITE_CONFIG;
+const { showDescription = true, ...props } = Astro.props;
+---
+
+<SectionHeader
+  section='Blog'
+  icon={Pencil}
+  title={title}
+  description={''}
+  {...props}
+  class:list={['text-center items-center', props.class]}
+>
+  <p class='mt-4 max-w-2xl text-zinc-400'>
+    Welcome to my blog where I share my thoughts, experiences, and knowledge about Software Engineering, Photography, and other interesting topics I'm passionate about.
+  </p>
+</SectionHeader>

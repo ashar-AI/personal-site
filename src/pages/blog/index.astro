@@ -1,0 +1,26 @@
+---
+import BlogHeader from '@/components/BlogHeader.astro'
+import SEO from '@/components/SEO.astro'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import { BLOG_CONFIG } from '@/config/blog'
+import { getCustomTransition } from '@/lib/customTransition'
+import BlogUnderConstruction from '@/components/BlogUnderConstruction.astro'
+
+import Decorator from '../projects/_components/Decorator.astro'
+---
+
+<BaseLayout>
+  <SEO
+    title={BLOG_CONFIG.title}
+    description={BLOG_CONFIG.description}
+    slot='seo'
+  />
+  
+  <Decorator slot='decorator' />
+  
+  <BlogHeader class='mt-16 sm:mt-40' />
+  
+  <div class='mt-12 sm:mt-16' transition:animate={getCustomTransition(0.2)}>
+    <BlogUnderConstruction class='max-w-2xl mx-auto' />
+  </div>
+</BaseLayout>

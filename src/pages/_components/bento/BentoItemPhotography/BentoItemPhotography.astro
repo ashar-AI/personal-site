@@ -1,0 +1,30 @@
+---
+import BentoItemPhotographyContent from './BentoItemPhotographyContent.tsx'
+
+// In the future, we can fetch photos from an API here
+const photos = [
+  {
+    src: 'https://www.gstatic.com/webp/gallery/1.webp',
+    alt: 'Mountain landscape',
+    title: 'Mountain View',
+    description: 'Beautiful mountain range at sunset'
+  },
+  {
+    src: 'https://www.gstatic.com/webp/gallery/2.webp',
+    alt: 'Ocean waves',
+    title: 'Ocean Breeze',
+    description: 'Calm ocean waves at dawn'
+  },
+  {
+    src: 'https://www.gstatic.com/webp/gallery/4.webp',
+    alt: 'Forest path',
+    title: 'Forest Trail',
+    description: 'Mysterious forest path in autumn'
+  }
+]
+
+// Set cache control for the page
+Astro.response.headers.set('Cache-Control', 'public, max-age=3600')
+---
+
+<BentoItemPhotographyContent photos={photos} client:only='react' />

@@ -1,0 +1,41 @@
+---
+import client from '@/lib/client'
+
+import BentoGithubActivityChart from './BentoItemGithubActivityChart'
+
+let data = null;
+let error = null;
+
+try {
+  const response = await client.api.github.contributions.$get()
+  if (response.ok) {
+    data = await response.json()
+    console.log('GitHub contributions data:', data)
+  } else {
+    console.error('Failed to fetch GitHub contributions:', response.status, response.statusText)
+    error = 'Failed to load GitHub activity data.'
+  }
+} catch (err) {
+  console.error('Error fetching GitHub contributions:', err)
+  error = 'An error occurred while loading GitHub activity.'
+}
+
+Astro.response.headers.set('Cache-Control', 'public, max-age=3600')
+---
+
+{
+  error ? (
+    <div class="flex h-full flex-col items-center justify-center p-4 text-center">
+      <p class="text-sm text-red-400">{error}</p>
+      <p class="mt-2 text-xs text-zinc-500">
+        Check the console for more details.
+      </p>
+    </div>
+  ) : data ? (
+    <BentoGithubActivityChart {...data} client:only='react' />
+  ) : (
+    <div class="flex h-full items-center justify-center">
+      <p class="text-sm text-zinc-400">Loading GitHub activity...</p>
+    </div>
+  )
+}
