@@ -35,6 +35,9 @@ importers:
       '@astrojs/vercel':
         specifier: ^8.0.0
         version: 8.1.4(astro@5.7.13(@types/node@22.15.18)(jiti@1.21.7)(lightningcss@1.29.3)(rollup@4.40.2)(terser@5.39.0)(typescript@5.8.3)(yaml@2.8.0))(react@19.1.0)(rollup@4.40.2)
+      '@babel/runtime':
+        specifier: ^7.27.1
+        version: 7.27.1
       '@hono/zod-validator':
         specifier: ^0.4.1
         version: 0.4.3(hono@4.7.9)(zod@3.24.4)

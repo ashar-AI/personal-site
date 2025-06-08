@@ -23,6 +23,7 @@ const getGithubContributions = async (): Promise<GithubContributionData> => {
       }
     })
 
+    console.log('GitHub API response:', response)
     if (!response || !(response as any)?.user) {
       console.error('Invalid GitHub API response:', response)
       throw new Error('Failed to fetch GitHub contributions')

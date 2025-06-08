@@ -2,7 +2,7 @@
 export const INTEGRATIONS = {
   github: {
     username: 'ashar-AI',
-    repository: 'Microbial', // TODO: Change this to your personal site repository
+    repository: 'personal-site', // TODO: Change this to your personal site repository
     apiUrl: 'https://api.github.com',
     enabled: true
   },

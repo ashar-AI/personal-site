@@ -1,5 +1,6 @@
 ---
-import BentoItemPhotographyContent from './BentoItemPhotographyContent.tsx'
+// Component imports
+import BentoItemPhotographyContent from './BentoItemPhotographyContent.tsx';
 
 // In the future, we can fetch photos from an API here
 const photos = [
@@ -21,10 +22,42 @@ const photos = [
     title: 'Forest Trail',
     description: 'Mysterious forest path in autumn'
   }
-]
+];
 
 // Set cache control for the page
-Astro.response.headers.set('Cache-Control', 'public, max-age=3600')
+Astro.response.headers.set('Cache-Control', 'public, max-age=3600');
 ---
 
-<BentoItemPhotographyContent photos={photos} client:only='react' />
+<div class="relative w-full h-full">
+  {photos.length > 0 ? (
+    <BentoItemPhotographyContent 
+      photos={photos} 
+      client:load
+      className="h-full w-full"
+    />
+  ) : (
+    <div class="absolute inset-0 flex items-center justify-center bg-gray-100 rounded-2xl">
+      <p class="text-gray-500">No photos available</p>
+    </div>
+  )}
+  
+  {/* Error boundary fallback - client-side only */}
+  <div id="photo-error-boundary" class="hidden">
+    <div class="absolute inset-0 flex items-center justify-center bg-red-50 rounded-2xl">
+      <p class="text-red-500">Failed to load photos</p>
+    </div>
+  </div>
+  
+  <script is:inline>
+    // Simple error boundary for client-side errors
+    document.addEventListener('DOMContentLoaded', () => {
+      window.addEventListener('error', (event) => {
+        console.error('Error in photo component:', event.error);
+        const errorBoundary = document.getElementById('photo-error-boundary');
+        if (errorBoundary) {
+          errorBoundary.classList.remove('hidden');
+        }
+      });
+    });
+  </script>
+</div>
